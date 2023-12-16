@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ServerApp.Data;
+using ServerApp.Secret;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UserContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("UserConString")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ServerAppConString")));
 
 builder.Services.AddAuthorization();
 
